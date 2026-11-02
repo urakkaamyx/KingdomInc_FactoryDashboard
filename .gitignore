@@ -1,0 +1,73 @@
+# Documentation: README.md is the only tracked Markdown document.
+*.[mM][dD]
+![Rr][Ee][Aa][Dd][Mm][Ee].[mM][dD]
+
+# AI instructions, agent state, prompts, and local editor state.
+.codex/
+.claude/
+.cursor/
+.agents/
+.ai/
+.aider*
+.github/instructions/
+.github/prompts/
+.vscode/
+.idea/
+*[Pp]rompt*.txt
+*[Pp]rompt*.json
+*[Pp]rompt*.yaml
+*[Pp]rompt*.yml
+
+# Verification artifacts, diagnostics, logs, and checksums.
+[Vv]erification/
+[Vv]erifications/
+[Vv]erification.*
+*[Vv]erification.json
+*[Vv]erification.txt
+*[Vv]erification.log
+[Tt]est[Rr]esults/
+.coverage*
+htmlcov/
+coverage/
+*[Cc]hecksum*
+[Ss][Hh][Aa]1*
+[Ss][Hh][Aa]256*
+[Ss][Hh][Aa]512*
+*.[Ss][Hh][Aa]1
+*.[Ss][Hh][Aa]256
+*.[Ss][Hh][Aa]512
+*.log
+*.pid
+
+# Build output, packaged releases, backups, and caches.
+[Bb]in/
+[Oo]bj/
+[Rr]eleases/
+_[Bb]ackup/
+[Bb]ackups/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+node_modules/
+*.bak
+*.tmp
+*.temp
+*.user
+*.suo
+.DS_Store
+Thumbs.db
+
+# Local credentials and runtime state.
+.env
+.env.*
+!.env.example
+*.sqlite
+*.sqlite3
+*.sqlite3-*
+*.db
+
+# dist/ contains the application's JavaScript, HTML, CSS, and required assets.
+# Keep it eligible for tracking; it is the application source in this project.
+/Nexus/*.zip

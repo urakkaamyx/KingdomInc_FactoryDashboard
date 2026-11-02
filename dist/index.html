@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#211d1e"><title>Factory Planner · Kingdom Inc.</title>
+  <link rel="icon" href="assets/icons/Icons_12.png"><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to dashboard</a>
+  <div class="workspace">
+    <aside class="sidebar" aria-label="Production goals">
+      <div class="sidebar-heading"><img src="assets/icons/Icons_12.png" alt=""><div><span class="eyebrow">KINGDOM INC.</span><h1>Factory planner</h1></div></div>
+      <button class="primary add-production" data-action="add"><span aria-hidden="true">＋</span> Production</button>
+      <label class="search-box"><span aria-hidden="true">⌕</span><input id="goal-search" type="search" placeholder="Search production" aria-label="Search production"></label>
+      <div class="sidebar-label"><span>YOUR PRODUCTION</span><span id="goal-count">00</span></div>
+      <div id="goal-list" class="goal-list"></div>
+      <div class="sidebar-bottom"><div class="small-gem" aria-hidden="true"></div><p>Every production starts<br>with its own supply chain.</p><small>Goals saved in this browser</small></div>
+    </aside>
+    <div class="main-shell">
+      <header class="page-header"><div><div class="eyebrow" id="breadcrumb">YOUR KINGDOM / LIVE WORKSHOP</div><h2 id="page-title">Factory overview</h2><p id="page-subtitle">A clear view of everything keeping your kingdom moving.</p></div><div class="connection-tools"><div id="connection" class="connection offline" role="status"><span class="status-light"></span><span>Connecting…</span></div><button class="icon-button" data-action="settings" aria-label="Connection settings" title="Connection settings">⚙</button></div></header>
+      <nav class="tabs" aria-label="Dashboard views">
+        <button data-view="overview" aria-current="page">Overview</button><button data-view="production">Production <span id="tab-goal-count">0</span></button><button data-view="resources">Resources</button><button data-view="research">Research</button><button data-view="factory">Factory</button>
+      </nav>
+      <div id="connection-banner" class="connection-banner" hidden></div>
+      <main id="main" tabindex="-1"><div class="loading panel"><div class="small-gem"></div><h3>Opening the workshop ledger</h3><p>Connecting to your kingdom…</p></div></main>
+      <footer><span id="sync-detail">Waiting for the game</span><span>Kingdom Inc. <span class="footer-dot">◆</span> Factory planner</span></footer>
+    </div>
+  </div>
+  <dialog id="production-dialog" aria-labelledby="production-dialog-title"><form id="production-form"><div class="dialog-heading"><div><span class="eyebrow">A NEW PRODUCTION LINE</span><h2 id="production-dialog-title">What shall we make?</h2></div><button type="button" class="icon-button" data-close="production-dialog" aria-label="Close">×</button></div><label class="field target-kind">Production target<select id="production-kind"><option value="item">Product</option><option value="objective">Objective building</option></select></label><label class="search-box"><span aria-hidden="true">⌕</span><input type="search" id="item-search" placeholder="Find a product or building…" aria-label="Find a product or building"></label><div class="picker-meta"><span id="picker-count">Waiting for game data</span><label><input type="checkbox" id="show-locked"> Show locked</label></div><div id="item-picker" class="item-picker" role="listbox" aria-label="Items"></div><div id="selection" class="selection"></div><div id="new-rate-fields" class="rate-fields"><label>Desired output<input id="new-rate" type="number" value="1" min="0" max="1000000" step="any" required></label><label>Rate<select id="new-unit"><option value="1">Per second</option><option value="60">Per minute</option></select></label></div><p id="production-dialog-note" class="dialog-note">A separate chain, starting at basic resources. Estimates follow your current research and building speeds.</p><p id="production-error" class="error" role="alert"></p><div class="dialog-actions"><button type="button" class="ghost" data-close="production-dialog">Cancel</button><button type="submit" class="primary" id="create-goal" disabled>Add production</button></div></form></dialog>
+  <dialog id="settings-dialog" aria-labelledby="settings-title"><form id="settings-form"><div class="dialog-heading"><div><span class="eyebrow">YOUR GAME CONNECTION</span><h2 id="settings-title">Workshop connection</h2></div><button type="button" class="icon-button" data-close="settings-dialog" aria-label="Close">×</button></div><p class="muted">Keep Kingdom Inc. running with the Factory API enabled. This dashboard can stay open on another monitor.</p><label class="field">Local API address<input type="url" id="api-address" value="http://127.0.0.1:17840" required></label><p id="settings-error" class="error" role="alert"></p><div class="dialog-actions"><button type="button" class="ghost" data-close="settings-dialog">Cancel</button><button type="submit" class="primary">Connect</button></div></form></dialog>
+  <dialog id="detail-dialog" aria-labelledby="detail-title"><div class="dialog-heading"><div><span class="eyebrow" id="detail-eyebrow">WORKSHOP REGISTER</span><h2 id="detail-title">Details</h2></div><button type="button" class="icon-button" data-close="detail-dialog" aria-label="Close">×</button></div><div id="detail-content"></div></dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

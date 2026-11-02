@@ -1,0 +1,380 @@
+{
+  "iron_armor": {
+    "armorType": "Heavy"
+  },
+  "iron_helm": {
+    "armorType": "Heavy"
+  },
+  "iron_sword": {
+    "armorType": "None"
+  },
+  "iron_dagger": {
+    "armorType": "None"
+  },
+  "tinkersteel_armor": {
+    "armorType": "Heavy"
+  },
+  "tinkersteel_helm": {
+    "armorType": "Heavy"
+  },
+  "tinkersteel_sword": {
+    "armorType": "None"
+  },
+  "tinkersteel_dagger": {
+    "armorType": "None"
+  },
+  "tinkersteel_rapier": {
+    "armorType": "None"
+  },
+  "tinkersteel_greatsword": {
+    "armorType": "None"
+  },
+  "tinkersteel_axe": {
+    "armorType": "None"
+  },
+  "trueshot_bow": {
+    "armorType": "None"
+  },
+  "petrified_shield": {
+    "armorType": "Heavy"
+  },
+  "witch_robe": {
+    "armorType": "Light"
+  },
+  "witch_hood": {
+    "armorType": "Light"
+  },
+  "primal_cover": {
+    "armorType": "Medium"
+  },
+  "primal_mask": {
+    "armorType": "Medium"
+  },
+  "archmage_staff": {
+    "armorType": "None"
+  },
+  "archbishop_staff": {
+    "armorType": "None"
+  },
+  "winged_boots": {
+    "armorType": "None"
+  },
+  "golem_gauntlets": {
+    "armorType": "None"
+  },
+  "mind_goggles": {
+    "armorType": "None"
+  },
+  "crit_goggles": {
+    "armorType": "None"
+  },
+  "chainsaw": {
+    "armorType": "None"
+  },
+  "shield_arm": {
+    "armorType": "None"
+  },
+  "triune_shield": {
+    "armorType": "None"
+  },
+  "scroll_of_healing": {
+    "armorType": "None"
+  },
+  "scroll_of_aoe_healing": {
+    "armorType": "None"
+  },
+  "scroll_of_damage": {
+    "armorType": "None"
+  },
+  "scroll_of_energy": {
+    "armorType": "None"
+  },
+  "tome_of_health": {
+    "armorType": "None"
+  },
+  "tome_of_stats": {
+    "armorType": "None"
+  },
+  "tome_of_energy": {
+    "armorType": "None"
+  },
+  "prayer_beads": {
+    "armorType": "None"
+  },
+  "blessed_prayer_beads": {
+    "armorType": "None"
+  },
+  "demonsteel_armor": {
+    "armorType": "Heavy"
+  },
+  "demonsteel_helm": {
+    "armorType": "Heavy"
+  },
+  "infected_shield": {
+    "armorType": "Heavy"
+  },
+  "hellish_cover": {
+    "armorType": "Medium"
+  },
+  "hellish_mask": {
+    "armorType": "Medium"
+  },
+  "prophet_robe": {
+    "armorType": "Light"
+  },
+  "prophet_hood": {
+    "armorType": "Light"
+  },
+  "archmage_robe": {
+    "armorType": "Light"
+  },
+  "archmage_hat": {
+    "armorType": "Light"
+  },
+  "vanquisher_sword": {
+    "armorType": "None"
+  },
+  "blighted_dagger": {
+    "armorType": "None"
+  },
+  "blink_rapier": {
+    "armorType": "None"
+  },
+  "flenser_greatsword": {
+    "armorType": "None"
+  },
+  "unblinking_axe": {
+    "armorType": "None"
+  },
+  "deadeye_bow": {
+    "armorType": "None"
+  },
+  "fragment_staff": {
+    "armorType": "None"
+  },
+  "unlife_staff": {
+    "armorType": "None"
+  },
+  "indulgence": {
+    "armorType": "None"
+  },
+  "pontiff_ring": {
+    "armorType": "None"
+  },
+  "martyr_relic": {
+    "armorType": "None"
+  },
+  "simple_robe": {
+    "armorType": "Light"
+  },
+  "initiate_hat": {
+    "armorType": "Light"
+  },
+  "rough_vest": {
+    "armorType": "Medium"
+  },
+  "rough_leather_hat": {
+    "armorType": "Medium"
+  },
+  "softwood_bow": {
+    "armorType": "None"
+  },
+  "initiate_staff": {
+    "armorType": "None"
+  },
+  "softwood_warstaff": {
+    "armorType": "None"
+  },
+  "simple_wooden_shield": {
+    "armorType": "Heavy"
+  },
+  "reinforced_wooden_shield": {
+    "armorType": "Heavy"
+  },
+  "iron_greatsword": {
+    "armorType": "None"
+  },
+  "iron_battleaxe": {
+    "armorType": "None"
+  },
+  "gold_armor": {
+    "armorType": "Heavy"
+  },
+  "gold_crown": {
+    "armorType": "Light"
+  },
+  "gold_sword": {
+    "armorType": "None"
+  },
+  "boar_steak": {
+    "armorType": "None"
+  },
+  "cooked_egg": {
+    "armorType": "None"
+  },
+  "salad": {
+    "armorType": "None"
+  },
+  "mushroom_stew": {
+    "armorType": "None"
+  },
+  "wild_staff": {
+    "armorType": "None"
+  },
+  "iron_rapier": {
+    "armorType": "None"
+  },
+  "healing_potion": {
+    "armorType": "None"
+  },
+  "energy_potion": {
+    "armorType": "None"
+  },
+  "rations": {
+    "armorType": "None"
+  },
+  "training_sword": {
+    "armorType": "None"
+  },
+  "arcanium_armor": {
+    "armorType": "Heavy"
+  },
+  "arcanium_helm": {
+    "armorType": "Heavy"
+  },
+  "arcanium_sword": {
+    "armorType": "None"
+  },
+  "arcanium_dagger": {
+    "armorType": "None"
+  },
+  "arcanium_greatsword": {
+    "armorType": "None"
+  },
+  "arcanium_battleaxe": {
+    "armorType": "None"
+  },
+  "ancient_wood_staff": {
+    "armorType": "None"
+  },
+  "ancient_wood_bow": {
+    "armorType": "None"
+  },
+  "ancient_shield": {
+    "armorType": "Heavy"
+  },
+  "hamburger": {
+    "armorType": "None"
+  },
+  "salamander_skewer": {
+    "armorType": "None"
+  },
+  "stalker_stew": {
+    "armorType": "None"
+  },
+  "ancient_int_staff": {
+    "armorType": "None"
+  },
+  "ancient_wis_staff": {
+    "armorType": "None"
+  },
+  "cotton_robe": {
+    "armorType": "Light"
+  },
+  "cotton_hat": {
+    "armorType": "Light"
+  },
+  "embossed_vest": {
+    "armorType": "Medium"
+  },
+  "embossed_hat": {
+    "armorType": "Medium"
+  },
+  "simple_ring": {
+    "armorType": "None"
+  },
+  "ring_of_strength": {
+    "armorType": "None"
+  },
+  "ring_of_dexterity": {
+    "armorType": "None"
+  },
+  "ring_of_magic": {
+    "armorType": "None"
+  },
+  "ring_of_wisdom": {
+    "armorType": "None"
+  },
+  "ring_of_health": {
+    "armorType": "None"
+  },
+  "ring_of_armor": {
+    "armorType": "None"
+  },
+  "ring_of_strength_2": {
+    "armorType": "None"
+  },
+  "ring_of_dexterity_2": {
+    "armorType": "None"
+  },
+  "ring_of_magic_2": {
+    "armorType": "None"
+  },
+  "ring_of_wisdom_2": {
+    "armorType": "None"
+  },
+  "ring_of_health_2": {
+    "armorType": "None"
+  },
+  "ring_of_armor_2": {
+    "armorType": "None"
+  },
+  "amulet_of_healing": {
+    "armorType": "None"
+  },
+  "amulet_of_energy": {
+    "armorType": "None"
+  },
+  "amulet_of_fire_prot": {
+    "armorType": "None"
+  },
+  "amulet_of_shadow_prot": {
+    "armorType": "None"
+  },
+  "amulet_of_poison_prot": {
+    "armorType": "None"
+  },
+  "lifebloom_amulet": {
+    "armorType": "None"
+  },
+  "fireball_amulet": {
+    "armorType": "None"
+  },
+  "stats_amulet": {
+    "armorType": "None"
+  },
+  "fire_resist_potion": {
+    "armorType": "None"
+  },
+  "shadow_resist_potion": {
+    "armorType": "None"
+  },
+  "poison_resist_potion": {
+    "armorType": "None"
+  },
+  "armor_potion": {
+    "armorType": "None"
+  },
+  "greater_healing_potion": {
+    "armorType": "None"
+  },
+  "stats_potion": {
+    "armorType": "None"
+  },
+  "swiftness_potion": {
+    "armorType": "None"
+  },
+  "regen_potion": {
+    "armorType": "None"
+  }
+}

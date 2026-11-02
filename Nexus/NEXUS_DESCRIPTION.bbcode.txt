@@ -1,0 +1,32 @@
+[b]Kingdom Inc. Factory Planner[/b]
+Plan production in a separate browser window or on a second monitor while your kingdom runs.
+
+[b]Features[/b]
+[list]
+[*]A dashboard styled to match Kingdom Inc., with live research, unlocks, upgrades and resources.
+[*]Production targets for products and objective buildings, with chosen input rates.
+[*]Outfitter equipment, compatible enhancements and ordered training stages.
+[*]Generate a manual build guide with individual machines or compact groups, right-angle connections, utility routing and node modifier details.
+[*]Fullscreen flow view, zoom/pan and rainbow highlighting of direct parents and children.
+[*]Workshop floors and building registers organized by nested in-game Containers.
+[*]Final products, measured items/second, attributed revenue and scoped container profit/deficit.
+[*]Treasury balances and observed net changes; Gold, Silver and Copper icons in that order, without decimal coin amounts.
+[/list]
+
+[b]Requirements[/b]
+Windows x64 Mono edition of Kingdom Inc.; [url=https://github.com/BepInEx/BepInEx/releases/tag/v5.4.23.5]BepInEx 5.4.23.5 or newer in the 5.x series[/url]; [url=https://www.python.org/downloads/windows/]Python 3.9+[/url] available as the python command; a modern browser.
+BepInEx and Python are installed separately.
+
+[b]Manual installation[/b]
+Close the game. With BepInEx installed, extract the main ZIP into the folder containing KingdomInc.exe, merging BepInEx and _Mods. Start the game, load your kingdom, then double-click Start Factory Planner.cmd. The dashboard opens at http://127.0.0.1:17841. Use Stop Factory Planner.cmd to stop its background web server.
+The included README covers setup, updates, removal and troubleshooting. Vortex deployment is untested.
+
+[b]What is measured and what is planned?[/b]
+API 0.1.3 records actual accepted transfers, objective deliveries and building earnings/spend. Container rates use live samples over up to 60 seconds; imported or shared production costs are not allocated. Unattributable revenue stays unavailable. Treasury net includes purchases, refunds and collections.
+Generated layouts are estimates and manual build guides: they do not place buildings or change your kingdom. Machine counts assume continuous operation and do not credit productivity or byproducts.
+
+[b]Local operation[/b]
+The API and dashboard bind to localhost. The API is read-only; plans and cached snapshots are saved in your browser. No save or personal browser data is included in the download.
+
+[b]Credits[/b]
+Mod and dashboard by Urakka. Original Kingdom Inc. artwork, icons, styling, fonts and definitions belong to their respective creators. Thanks to the BepInEx, Harmony and Python maintainers. Unofficial mod; not affiliated with the game's developer.

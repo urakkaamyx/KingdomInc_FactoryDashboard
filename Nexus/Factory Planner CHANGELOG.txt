@@ -1,0 +1,19 @@
+0.1.3 - Initial combined Nexus package
+
+- External, game-themed dashboard on localhost; no in-game screen overlay.
+- Live unlocks, research, upgrades, resource quotas and building inspection.
+- Product and objective production targets with chosen input rates.
+- Ordered outfitting, equipment enhancements and training preparation.
+- Generated manual build guides with grouped or individual machines, fullscreen,
+  zoom/pan, right-angle pipes, family colors and modifier inspection.
+- Routing utilities respect four-connection limits; optional storage buffers.
+- Workshop Containers nest in their actual parent in overview and register views.
+- Final products, accepted items/second, measured revenue and scoped container net.
+- API 0.1.3 adds transfer/delivery counters and observed building income/spend.
+- Treasury balance-change profit/deficit over a rolling live observation window.
+- Gold, Silver and Copper always appear in that order, including zero values;
+  money display uses whole Copper with correct denomination carries.
+- Start/Stop launchers and installation/update/removal instructions.
+
+The API's internal version remains 0.1.3. The combined package also contains the
+dashboard updates completed after the original standalone API 0.1.3 release.
