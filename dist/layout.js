@@ -2,7 +2,7 @@
 // describes their individual pipes without expanding large plans into millions of nodes.
 export function layoutSignature(model,goal,plan){
   const {id,showLocked,...configuration}=goal;
-  return JSON.stringify([3,configuration,plan.nodes.map(n=>[n.itemId,n.useSupply,n.rate,n.count,n.unitRate,n.locked,n.rateBasis]),plan.stages,plan.warnings,
+  return JSON.stringify([4,configuration,plan.nodes.map(n=>[n.itemId,n.useSupply,n.rate,n.count,n.unitRate,n.locked,n.rateBasis]),plan.stages,plan.warnings,
     ['Collector','Distributor','Manifold','Stockpile'].map(t=>[t,model.buildable.has(t)])]);
 }
 export function generateLayout(model,goal,plan){
@@ -114,15 +114,19 @@ export function generateLayout(model,goal,plan){
   // nodes represent single placed buildings with the stated configurable port count.
   function utility(type,itemId,rate,slots,reason){
     if(slots>4)throw new Error('Routing utilities support at most four ports per side.');
-    const locked=!model.buildable.has(type);
-    if(locked)warnings.add(`${model.name(type)} research is required for this wiring.`);
+    if(!model.buildable.has(type))throw new Error(`Research ${model.name(type)} before using it to route this layout.`);
     if(type==='Manifold')warnings.add('Manifold outputs use priority and backpressure. Labelled branch rates are demand budgets, not configured split ratios; check for starvation in-game.');
     if(nodes.length>=500)throw new Error('This layout exceeds 500 groups. Split it into smaller production goals.');
-    return node({kind:'utility',type,itemId,title:model.name(type),subtitle:reason,rate,locked,reason,
+    return node({kind:'utility',type,itemId,title:model.name(type),subtitle:reason,rate,locked:false,reason,
       settings:type==='Distributor'?{OutputCount:Math.max(2,slots)}:{InputCount:Math.max(2,slots)}});
   }
-  const mergeType=()=>model.buildable.has('Collector')?'Collector':model.buildable.has('Manifold')?'Manifold':'Collector';
-  const splitType=()=>model.buildable.has('Distributor')?'Distributor':model.buildable.has('Manifold')?'Manifold':'Distributor';
+  function routingType(preferred,purpose){
+    const type=[preferred,'Manifold'].find(type=>model.buildable.has(type));
+    if(!type)throw new Error(`Research ${model.name(preferred)} or ${model.name('Manifold')} to ${purpose}. This layout cannot be wired with your current routing unlocks.`);
+    return type;
+  }
+  const mergeType=()=>routingType('Collector','merge these production lines');
+  const splitType=()=>routingType('Distributor','split supply between these production lines');
   const sum=group=>group.reduce((total,e)=>total+e.rate,0);
   const sharedItem=group=>group.every(e=>e.itemId===group[0].itemId)?group[0].itemId:null;
   // Build bounded trees from connection records. Intermediate pipes retain their
@@ -150,7 +154,8 @@ export function generateLayout(model,goal,plan){
       }
       return splitConnections(branches,reason);
     }
-    const equal=group.every(e=>Math.abs(e.rate-group[0].rate)<1e-7),type=model.buildable.has('Manifold')?'Manifold':equal?splitType():'Manifold';
+    const equal=group.every(e=>Math.abs(e.rate-group[0].rate)<1e-7),type=model.buildable.has('Manifold')?'Manifold':splitType();
+    if(!equal&&type==='Distributor')warnings.add('Distributor outputs cycle between branches and skip blocked outputs. Branch rates are demand budgets, not configured split ratios; check supply and backpressure in-game.');
     const router=utility(type,sharedItem(group),sum(group),group.length,reason);
     group.forEach((e,index)=>{e.from=router.id;e.output=index;});return router;
   }

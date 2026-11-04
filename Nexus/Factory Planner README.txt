@@ -1,4 +1,4 @@
-KINGDOM INC. FACTORY PLANNER - 0.1.3
+KINGDOM INC. FACTORY PLANNER - 0.1.4
 External browser dashboard and read-only Factory API
 
 REQUIREMENTS

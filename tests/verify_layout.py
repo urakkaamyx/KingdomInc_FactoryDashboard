@@ -319,20 +319,25 @@ async def main():
           const dungeon={id:'dungeon',kind:'objective',buildingType:'Dungeon',inputs:[{itemId:'adventurer',rate:1,useSupply:true,modifiers:[]}]};
           const d=generateLayout(m,dungeon,planGoal(m,dungeon));
           const lockedSnapshot=structuredClone(snapshot);lockedSnapshot.sections.unlocks.data.buildingTypes=lockedSnapshot.sections.unlocks.data.buildingTypes.filter(t=>!['Collector','Distributor','Manifold','Stockpile'].includes(t));
-          const lockedModel=createModel(catalog,lockedSnapshot,traits),locked=generateLayout(lockedModel,external,planGoal(lockedModel,external));
+          const lockedModel=createModel(catalog,lockedSnapshot,traits);
+          let routingError='';
+          try{generateLayout(lockedModel,external,planGoal(lockedModel,external));}catch(error){routingError=error.message;}
+          const directGoal={id:'direct',itemId:'iron_sword',rate:.01,modifiers:[]};
+          const direct=generateLayout(lockedModel,directGoal,planGoal(lockedModel,directGoal));
           const enhancedGoal=structuredClone(external);enhancedGoal.inputs[0].modifiers[0].enhancements=['engrave_weapon_str'];
           const enhancedPlan=planGoal(m,enhancedGoal),enhanced=generateLayout(m,enhancedGoal,enhancedPlan);
           const product={id:'product',itemId:'iron_sword',rate:3,modifiers:[],layoutOptions:{buffers:false}};
           const productPlan=planGoal(m,product),plain=generateLayout(m,product,productPlan);
           const mixedGoal=structuredClone(external);mixedGoal.inputs.push({itemId:'conscript',rate:1,useSupply:true,modifiers:[]});
           const mixed=generateLayout(m,mixedGoal,planGoal(m,mixedGoal));
-          return {supplied,externalMachinesMatch:supplied.machines===externalPlan.buildings,dungeon:d,locked,stockpilesOmitted:!locked.nodes.some(n=>n.type==='Stockpile'),enhanced,enhancedMachinesMatch:enhanced.machines===enhancedPlan.buildings,plain,plainMachinesMatch:plain.machines===productPlan.buildings,mixed};
+          return {supplied,externalMachinesMatch:supplied.machines===externalPlan.buildings,dungeon:d,direct,routingError,stockpilesOmitted:!direct.nodes.some(n=>n.type==='Stockpile'),enhanced,enhancedMachinesMatch:enhanced.machines===enhancedPlan.buildings,plain,plainMachinesMatch:plain.machines===productPlan.buildings,mixed};
         }""",{'catalog':catalog,'snapshot':snapshot})
-        validate(scenarios['supplied']);validate(scenarios['dungeon']);validate(scenarios['locked'])
+        validate(scenarios['supplied']);validate(scenarios['dungeon']);validate(scenarios['direct'])
         dungeon_node=next(n for n in scenarios['dungeon']['nodes'] if n['type']=='Dungeon')
         assert {e['input'] for e in scenarios['dungeon']['edges'] if e['to']==dungeon_node['id']}==set(range(5))
         assert scenarios['externalMachinesMatch'] and scenarios['stockpilesOmitted']
-        assert scenarios['locked']['locked'] and any('research is required' in w for w in scenarios['locked']['warnings'])
+        assert not any(n['kind']=='utility' for n in scenarios['direct']['nodes'])
+        assert 'Research' in scenarios['routingError'] and 'Manifold' in scenarios['routingError']
         for key in ['enhanced','plain','mixed']:validate(scenarios[key])
         assert scenarios['enhancedMachinesMatch'] and scenarios['plainMachinesMatch']
         engraver=next(n for n in scenarios['enhanced']['nodes'] if n['kind']=='preparation' and n['type']=='Engraver')

@@ -14,7 +14,8 @@ from playwright.async_api import async_playwright
 from verify_dashboard import fixtures, PROJECT
 
 OUT = PROJECT / 'Releases/Nexus'
-PACKAGE = OUT / 'KingdomInc-FactoryPlanner-0.1.3.zip'
+VERSION = (PROJECT / 'version.txt').read_text().strip()
+PACKAGE = OUT / f'KingdomInc-FactoryPlanner-{VERSION}.zip'
 MANIFEST = '_Mods/FactoryDashboard/package-manifest.json'
 
 def powershell(script, *args):
@@ -51,6 +52,9 @@ async def main():
     root = extraction / '_Mods/FactoryDashboard'
     address = f'http://127.0.0.1:{port}'
     catalog, snapshot = fixtures()
+    # This install smoke test exercises a buildable layout. Locked-router
+    # rejection and unlocked fallbacks are covered by verify_routing.py.
+    snapshot['sections']['unlocks']['data']['buildingTypes'] += ['Collector', 'Distributor']
     snapshot['sections']['economy']['data']['currencies'] = {'Gold': '123456', 'Requisition': '43', 'Medal': '120'}
     async def route_api(route):
         path = route.request.url.split('17840', 1)[1]

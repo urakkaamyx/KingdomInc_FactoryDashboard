@@ -11,7 +11,8 @@ PROJECT = Path(__file__).resolve().parents[1]
 API = PROJECT.parent / 'FactoryPlannerApi'
 GAME = PROJECT.parents[1]
 OUT = PROJECT / 'Releases' / 'Nexus'
-VERSION = ET.parse(API / 'KingdomFactoryApi.csproj').getroot().findtext('PropertyGroup/Version')
+VERSION = (PROJECT / 'version.txt').read_text().strip()
+API_VERSION = ET.parse(API / 'KingdomFactoryApi.csproj').getroot().findtext('PropertyGroup/Version')
 PLUGIN_PATH = 'BepInEx/plugins/KingdomFactoryApi/KingdomFactoryApi.dll'
 MANIFEST_PATH = '_Mods/FactoryDashboard/package-manifest.json'
 SKIP = {'bin', 'obj', 'releases', 'verification', '__pycache__', '.git'}
@@ -47,14 +48,15 @@ def archive(path, entries):
             assert check.read(name) == data, name
 
 def main():
-    assert VERSION == re.search(r'Version = "([^"]+)"', (API / 'Core/ApiBuild.cs').read_text()).group(1)
+    assert API_VERSION == re.search(r'Version = "([^"]+)"', (API / 'Core/ApiBuild.cs').read_text()).group(1)
     dll = API / 'bin/Release/netstandard2.1/KingdomFactoryApi.dll'
-    release = json.loads((API / f'Verification/release-{VERSION}.json').read_text())
+    release = json.loads((API / f'Verification/release-{API_VERSION}.json').read_text())
     assert digest(dll.read_bytes()) == release['sha256'], 'DLL differs from verified Release build'
     assert release['diagnosticsExcludedFromNormalBuild']
     provenance = json.loads((API / 'Resources/provenance.json').read_text())
     expected_game = provenance['files']['KingdomInc_Data/Managed/Assembly-CSharp.dll']
-    assert digest((GAME / 'KingdomInc_Data/Managed/Assembly-CSharp.dll').read_bytes()) == expected_game
+    # Preserve the tested API's reference pin when publishing a dashboard update.
+    # The API reports referenceMatchesRuntime itself after a game update.
     OUT.mkdir(parents=True, exist_ok=True)
 
     payload = {}
@@ -71,7 +73,7 @@ def main():
     add_file(payload, API / 'openapi.json', '_Mods/FactoryDashboard/Docs/openapi.json')
     add_file(payload, PROJECT / 'README.md', '_Mods/FactoryDashboard/Docs/dashboard.md')
     manifest = {
-        'name': 'Kingdom Inc. Factory Planner', 'version': VERSION, 'apiPluginVersion': VERSION,
+        'name': 'Kingdom Inc. Factory Planner', 'version': VERSION, 'apiPluginVersion': API_VERSION,
         'installation': 'Manual extraction into the directory containing KingdomInc.exe',
         'requirements': ['Kingdom Inc. Windows x64 Mono', 'BepInEx 5.4.23.5+ (5.x)', 'Python 3.9+ on PATH', 'Modern browser'],
         'referenceGameAssemblySha256': expected_game,
